@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://localhost:35729/livereload.js"></script>
+
+
+    <link th:href="@{/css/style1.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<section>
+
+
+
+    <div class="col-md-12">
+    <div class="full-screen-video position-relative ">
+        <video autoplay muted loop playsinline class="w-100" style=" height: auto;">
+            <source th:src="@{/img/HinhAnh/Ecommerce Spring Boot/video/coverr-hotel-room-tour-9612-1080p.mp4}" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+<!--        </video>-->
+        <div class="text-slider position-absolute text-center">
+            <h2 class="heading-slider">Best Hotel</h2>
+            <h4>
+                Khám phá những khách sạn tuyệt vời trên khắp thế giới
+            </h4>
+            <a class="morebanner-btn btn btn-primary mt-3" href="#category">Xem thêm</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- End Slider  -->
+
+    <!--< Start Category Module -->
+    <div class="container  " id="category">
+        <div class="row">
+            <p class="text-center fs-4">Category</p>
+            <div class="col-md-2" th:each="c:${category}">
+                <div
+                        class="card rounded-circle shadow-sm p-3 mb-5 bg-body-tertiary rounded ">
+                    <div class="card-body text-center btn-primary custom-body">
+                        <img class="custom-pic mb-1 " th:src="@{'img/HinhAnh/Ecommerce Spring Boot/category_img/'+${c.imageName}}" width="65%" height="90px"><br>
+                        <a th:href="@{'/rooms?category='+${c.name}}" class=" btn btn-primary ">[[${c.name}]]</a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+    <!-- End Category Module -->
+
+
+    <!-- Start Trending room Module -->
+
+    <div class="container-fluid bg-light p-3">
+        <div class="row">
+            <p class="text-center fs-4">Trending </p>
+
+            <div class="col-md-3" th:each="p:${rooms}">
+                <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body text-center">
+                        <img  alt="" th:src="@{'img/HinhAnh/Ecommerce Spring Boot/category_img/'+${p.image}}" class="" width="65%"
+                             height="140px">
+                        <p class="text-center mt-1 "><a th:href="@{'/room_details/'+${p.id}}" class=" btn btn-primary">[[${p.name}]]</a></p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    </div>
+    <!-- End Trending room Module -->
+</section>
+
+</body>
+</html>
