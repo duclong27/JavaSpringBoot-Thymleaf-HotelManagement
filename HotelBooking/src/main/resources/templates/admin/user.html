@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+
+<head>
+    <title>Room Details</title>
+</head>
+<body>
+<!-- Định nghĩa phần nội dung để chèn vào base -->
+<section th:fragment="section">
+
+    <div class="container-fluid mt-4 p-3">
+        <div class="row">
+            <p class="text-center fs-3 mt-2">All Users</p>
+            <hr>
+            <a href="/identity/admin" class="text-decoration-none"><i
+                    class="fa-solid fa-arrow-left"></i> Back</a>
+            <th:block th:if="${session.succMsg}">
+                <p class="text-success fw-bold">[[${session.succMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+
+            <th:block th:if="${session.errorMsg}">
+                <p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+
+            <th:block th:if="${session.errorMsg}">
+                <p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+            <div class="col-md-4 p-3">
+
+                <form action="/identity/admin/users" method="get">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control " name="ch">
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary col">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <!-- <div class="card card-sh">-->
+            <div class="p-3">
+                <table class="table table-bordered">
+                    <thead class="table-light ">
+                    <tr>
+                        <th scope="col">Sl No</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Fullname</th>
+                        <th scope="col">Account non locked</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Created_At</th>
+                        <th scope="col">Date Of Birth </th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Facebook account id</th>
+                        <th scope="col">Failed Attempt</th>
+
+                        <th scope="col">Is enable</th>
+                        <th scope="col">Locked time</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Profile image</th>
+                        <th scope="col">Reset token</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Action</th>
+
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="p,c:${users}">
+                        <th scope="row">[[${c.count}]]</th>
+                        <td><img th:src="@{'/img/HinhAnh/Ecommerce Spring Boot/category_img/'+${p.profileImage}}"
+                                 width="70px" height="70px"></td>
+                        <td>[[${p.fullName}]]</td>
+                        <td>[[${p.accountNonLocked}]]</td>
+                        <td>[[${p.address}]]</td>
+                        <td>[[${p.createdAt}]]</td>
+                        <td>[[${p.dateOfBirth}]]</td>
+                        <td>[[${p.email}]]</td>
+                        <td>[[${p.facebookAccountId}]]</td>
+                        <td>[[${p.failedAttempt}]]</td>
+                        <td>[[${p.isEnable}]]</td>
+                        <td>[[${p.lockTime}]]</td>
+                        <td>[[${p.phoneNumber}]]</td>
+                        <td>[[${p.profileImage}]]</td>
+                        <td>[[${p.resetToken}]]</td>
+                        <td>[[${p.role}]]</td>
+                        <i class="fa-solid fa-check"></i>
+
+                        <td><a th:href="@{'/admin/updateUserStatus?status=true&id='+${p.id}}"
+                               class="btn btn-sm btn-primary"><i
+                                class="fa-solid fa-check"></i>Active</a>
+                            <a th:href="@{'/admin/updateUserStatus?status=false&id='+${p.id}}"
+                               class="btn btn-sm btn-primary"><i
+                                    class="fa-solid fa-ban"></i>InActive</a>
+
+                            <a
+                                th:href="@{'/admin/deleteUser/'+${p.id}}"
+                                class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i>
+                            Delete</a></td>
+                    </tr>
+
+
+
+<!--                    new-->
+                    <tr th:each="p,c:${users1}">
+                        <th scope="row">[[${c.count}]]</th>
+                        <td><img th:src="@{'/img/HinhAnh/Ecommerce Spring Boot/category_img/'+${p.profileImage}}"
+                                 width="70px" height="70px"></td>
+                        <td>[[${p.fullName}]]</td>
+                        <td>[[${p.accountNonLocked}]]</td>
+                        <td>[[${p.address}]]</td>
+                        <td>[[${p.createdAt}]]</td>
+                        <td>[[${p.dateOfBirth}]]</td>
+                        <td>[[${p.email}]]</td>
+                        <td>[[${p.facebookAccountId}]]</td>
+                        <td>[[${p.failedAttempt}]]</td>
+                        <td>[[${p.isEnable}]]</td>
+                        <td>[[${p.lockTime}]]</td>
+                        <td>[[${p.phoneNumber}]]</td>
+                        <td>[[${p.profileImage}]]</td>
+                        <td>[[${p.resetToken}]]</td>
+                        <td>[[${p.role}]]</td>
+                        <i class="fa-solid fa-check"></i>
+
+
+                    </tr>
+<!--                    end new-->
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+</body>
+</html>

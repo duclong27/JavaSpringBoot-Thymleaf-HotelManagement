@@ -1,0 +1,38 @@
+server:
+  port: 8088
+
+  servlet:
+    context-path: /identity
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/hotelbooking2"
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  thymeleaf:
+
+
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+#    prefix: "classpath:/templates/"
+    suffix: .html
+    web:
+      resources:
+#        static-locations: "classpath:/static/"
+        cache:
+          period: 0
+    devtools:
+      livereload:
+        enabled: true
+
+servlet:
+  multipart:
+    enabled: true
+    max-file-size: 2MB
+    max-request-size: 2MB

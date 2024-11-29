@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container-fluid  p-20 mt-1 custom-header">
+        <div class="row">
+            <!-- Hình ảnh chiếm 2 cột -->
+            <div class="col-md-2">
+                <img src="/identity/img/HinhAnh/Ecommerce Spring Boot/category_img/room1-removebg-preview.png"
+                     style="height: 100px; width: 100px;">
+            </div>
+
+
+            <div class="col-md-8">
+
+                <form action="/identity/search" method="get">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="ch">
+                                            <button class="btn btn-light text-dark ms-3 col-md-2">
+                                                <i class="fa-solid fa-magnifying-glass"></i> Search
+                                            </button>
+                                        </div>
+                </form>
+            </div>
+
+            <div class="col-md-2">
+                <img src="/identity/img/HinhAnh/Ecommerce Spring Boot/category_img/room-removebg.png"
+                     style="height: 100px; width: 100px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-1">
+        <div class="row">
+
+            <div class="col-md-2 p-0">
+
+                <div class="card shadow-sm p-0 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <div class="list-group">
+                            <p class="fs-5">Categories</p>
+                            <a href="/identity/rooms"
+                               th:classappend="${paramValue==''} ? 'active':''"
+                               class="list-group-item list-group-item-action"
+                               aria-current="true"> All </a> <a th:each="c : ${categories}"
+                                                                th:href="@{'/rooms?category=' + ${c.name}}"
+                                                                th:classappend="${paramValue == c.name} ? 'active':''"
+                                                                class="list-group-item list-group-item-action">[[${c.name}]]</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="fs-3 text-center">Rooms</p>
+<!--                        <p>Current room size: <span th:text="${roomsSize}">0</span></p> &lt;!&ndash; Thêm dòng này &ndash;&gt;-->
+                        <div class="row">
+
+                            <!-- Kiểm tra kích thước danh sách rooms -->
+                            <th:block th:if="${roomsSize > 0}">
+
+
+                                <div class="col-md-3 mt-2" th:each=" p : ${rooms}">
+                                    <div class="card card-sh">
+                                        <div class="card-body text-center">
+                                            <img alt="" th:src="@{'/img/HinhAnh/Ecommerce Spring Boot/category_img/'+${p.image}}"
+                                                 width="150px" height="150px">
+                                            <p class="fs-5 text-center">[[${p.name}]]</p>
+                                            <div class="row text-center">
+                                                <p class="fs-6 fw-bold ">
+                                                    <span>&#36; [[${p.discountPrice}]]</span> <br>
+                                                    <span class="text-decoration-line-through text-secondary">
+                                            &#36; [[${p.price}]]
+                                        </span>
+                                                    <span class="fs-6 text-success">[[${p.discount}]]% off </span>
+                                                </p>
+                                                <a th:href="@{'/room_details/'+${p.id}}"
+                                                   class="btn btn-primary col-md-6 offset-md-3">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </th:block>
+
+                            <!-- Thông báo khi không có phòng -->
+                            <th:block th:unless="${roomsSize > 0}">
+                                <p class="fs-4 text-center mt-4 text-danger">Room not available</p>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+</section>
+</body>
+</html>

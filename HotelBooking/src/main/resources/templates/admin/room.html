@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(~{::section})}">
+
+<head>
+    <title>Room Details</title>
+</head>
+<body>
+<!-- Định nghĩa phần nội dung để chèn vào base -->
+ <section th:fragment="section">
+
+     <div class="container-fluid mt-4 p-3">
+         <div class="row">
+            <p class="text-center fs-3 mt-2">All Rooms</p>
+            <hr>
+            <a href="/identity/admin" class="text-decoration-none"><i
+                    class="fa-solid fa-arrow-left"></i> Back</a>
+            <th:block th:if="${session.succMsg}">
+                <p class="text-success fw-bold">[[${session.succMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+
+            <th:block th:if="${session.errorMsg}">
+                <p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+
+            <th:block th:if="${session.errorMsg}">
+                <p class="text-danger fw-bold text-center">[[${session.errorMsg}]]</p>
+                <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+            </th:block>
+            <div class="col-md-4 p-3">
+
+                <form action="/identity/admin/room" method="get">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control " name="ch">
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary col">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- <div class="card card-sh">-->
+            <div class="p-3">
+                <table class="table table-bordered">
+                    <thead class="table-light ">
+                    <tr>
+                        <th scope="col">Sl No</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Discount </th>
+                        <th scope="col">Discount Price</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="p,c:${rooms}">
+                        <th scope="row">[[${c.count}]]</th>
+                        <td><img th:src="@{'/img/HinhAnh/Ecommerce Spring Boot/category_img/'+${p.image}}"
+                                 width="70px" height="70px"></td>
+                        <td>[[${p.name}]]</td>
+                        <td>[[${p.category}]]</td>
+                        <td>[[${p.price}]]</td>
+                        <td>[[${p.discount}]]</td>
+                        <td>[[${p.discountPrice}]]</td>
+                        <td>[[${p.isActive}]]</td>
+                        <td>[[${p.capacity}]]</td>
+                        <td>[[${p.description}]]</td>
+                        <td>[[${p.stock}]]</td>
+
+                        <td><a th:href="@{'/admin/editRoom/'+${p.id}}"
+                               class="btn btn-sm btn-primary"><i
+                                class="fa-solid fa-pen-to-square"></i>Edit</a> <a
+                                th:href="@{'/admin/deleteRoom/'+${p.id}}"
+                                class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i>
+                            Delete</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+         </div>
+     </div>
+</section>
+</body>
+</html>

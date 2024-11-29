@@ -1,0 +1,113 @@
+.full-screen-video {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Chiều cao video toàn màn hình */
+    overflow: hidden;
+}
+
+.full-screen-video video {
+    object-fit: cover; /* Video bao phủ khung */
+    width: 100%;
+    height: 100%;
+}
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Không hiển thị mặc định */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi */
+    pointer-events: none; /* Cho phép click xuyên qua lớp phủ */
+}
+
+.text-slider {
+    position: absolute;
+    top: 50%; /* Đặt giữa theo chiều dọc */
+    left: 50%; /* Đặt giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Điều chỉnh để canh giữa */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Tạo hiệu ứng bóng cho chữ */
+}
+
+.heading-slider {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.morebanner-btn {
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.morebanner-btn:hover ~ .video-overlay {
+    background-color: rgba(0, 0, 0, 0.4); /* Làm mờ video */
+}
+
+
+.custom-navbar {
+    background-color: rgba(0, 0, 0, 0.5); /* Navbar trong suốt với màu đen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Đảm bảo navbar nằm trên tất cả các phần tử khác */
+}
+
+.custom-header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.9)); /* Gradient mượt mà */
+    padding-top: 120px; /* Thêm padding dày ở trên */
+    padding-bottom: 50px; /* Điều chỉnh padding dưới */
+    margin-top: 100px; /* Tạo không gian dày giữa navbar và header */
+    text-align: center;
+    color: #fff; /* Màu chữ sáng */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ cho header */
+}
+
+/* Đặt viền, padding, và màu sắc cho các input */
+/* Màu sắc tươi sáng cho input */
+.custom-date-input {
+    border: 2px solid #28a745; /* Viền màu xanh lá cây */
+    border-radius: 8px;
+    padding: 10px 15px;
+    background-color: #e9f7ef; /* Nền màu xanh lá cây nhạt */
+    font-size: 16px;
+    transition: border 0.3s ease-in-out;
+}
+
+.custom-date-input:focus {
+    border-color: #155724; /* Màu viền đậm hơn khi focus */
+    background-color: #d4edda; /* Nền khi focus */
+    outline: none;
+}
+
+/* Để các nhãn không quá sát input */
+.form-label {
+    font-weight: bold; /* Làm chữ đậm để dễ nhận diện */
+    margin-bottom: 5px; /* Khoảng cách dưới nhãn */
+    font-size: 14px; /* Chữ nhỏ vừa phải */
+}
+
+/* Tạo khoảng cách giữa các trường ngày */
+.mt-3 {
+    margin-top: 15px; /* Tăng không gian giữa check-in và check-out */
+}
+
+.custom text_center{
+    background-color: #FFD700;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+btn-primary{
+    color: aqua;
+}
+custom-body{
+    border-radius: 20px;
+}
+.custom-pic{
+    border-radius: 40px;
+}
+.

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<section  th:fragment="section">
+
+
+  <div class="container-fluid mt-5 p-5">
+
+    <div class="card card-sh">
+      <div class="card-header text-center">
+        <p class="fs-4">Cart Page</p>
+        <th:block th:if="${session.succMsg}">
+          <p class="text-success fw-bold">[[${session.succMsg}]]</p>
+          <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+        </th:block>
+
+        <th:block th:if="${session.errorMsg}">
+          <p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+          <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+        </th:block>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Sl No</th>
+            <th scope="col">Image</th>
+            <th scope="col">Room Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Check in date</th>
+            <th scope="col">Check out date</th>
+            <th scope="col">Service Included</th>
+            <th scope="col">Total Price</th>
+          </tr>
+          </thead>
+          <tbody>
+
+
+          <tr th:each="p,c:${bookingCarts}">
+            <th scope="row">[[${c.count}]]</th>
+            <td><img
+                    th:src="@{'/img/HinhAnh/Ecommerce Spring Boot/category_img/'+${p.room.image}}"
+                    width="70px" height="70px"></td>
+            <td>[[${p.room.name}]]</td>
+            <td>[[${p.room.discountPrice}]]</td>
+            <td>[[${p.checkInDate}]]</td>
+            <td>[[${p.checkOutDate}]]</td>
+
+            <td>
+              <ul>
+                <li th:each="service : ${p.services}" th:text="${service}"></li>
+              </ul>
+            </td>
+
+
+
+            <td>[[${p.totalPrice}]]</td>
+
+          </tr>
+          <tr>
+            <td colspan="4"></td>
+            <td class="fw-bold">Total Order Price</td>
+            <td class="fw-bold">&#8377; [[${totalOrderPrice}]]</td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div class="text-center">
+          <a href="/identity/users/orders" class="btn btn-warning"> Proceed Payment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+</body>
+</html>

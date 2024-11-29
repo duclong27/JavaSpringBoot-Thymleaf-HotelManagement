@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::layout(~{::section})}">
+<head>
+
+</head>
+<body  >
+<section th:fragment="section" >
+
+  <style>
+    /* Tạo khoảng cách giữa các bảng */
+    .row.mt-5 {
+      margin-top: 50px;
+    }
+
+    /* Tạo kiểu cho bảng */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng cho bảng */
+    }
+    /* Tạo margin cho bảng để cách xa lề trái và phải */
+    table {
+      width: 100%;
+      margin-left: 40px; /* Tạo khoảng cách giữa các bảng */
+      border-collapse: collapse; /* Làm cho bảng không bị cách nhau */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng cho bảng */
+    }
+    .text{
+      margin-left: 120px;
+      margin-top: 50px;
+    }
+
+    /* Kiểu cho các tiêu đề bảng */
+    th {
+      background-color: #007bff; /* Màu nền xanh */
+      color: white; /* Màu chữ trắng */
+      font-weight: bold;
+      text-align: center;
+      padding: 12px; /* Thêm khoảng cách */
+      border: 1px solid #dee2e6; /* Viền mịn */
+    }
+
+    /* Kiểu cho các ô dữ liệu */
+    td {
+      text-align: center;
+      padding: 12px;
+      border: 1px solid #dee2e6;
+    }
+
+    /* Tạo hiệu ứng hover cho hàng */
+    tr:hover {
+      background-color: #f1f1f1; /* Màu nền khi di chuột */
+    }
+
+    /* Kiểu cho tiêu đề bảng */
+    h1, h2 {
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 15px;
+      font-size: 1.5em;
+    }
+
+    /* Tạo khoảng cách giữa các cột */
+    .col-md-4 {
+      padding: 10px;
+    }
+  </style>
+<!--<div id="chart_div" style="width: 900px; height: 500px;"></div>-->
+
+<!---->
+
+
+
+
+  <div class="row mt-5 " >
+  <div class="col-md-5 off-set-1 ">
+<table>
+  <h2 class ="text" >Room order statistics</h2>
+
+  <div th:if="${error}">
+    <p th:text="${error}"></p>
+  </div>
+
+  <table class="padding-20px" border="4">
+    <thead>
+    <style>
+      th, td {
+        padding: 10px; /* Thêm khoảng cách bên trong các ô */
+      }
+    </style>
+    <tr>
+      <th>Room Id</th>
+      <th>Booked times</th>
+      <th>Percentage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${reports}">
+      <td th:text="${p.roomId}"></td>
+      <td th:text="${p.numberOfOrders}"></td>
+      <td th:text="${p.percentage} + '%'"></td> <!-- Hiển thị phần trăm -->
+    </tr>
+    </tbody>
+  </table>
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+<!---->
+<!--<div class="col-md-3 off-set-1">-->
+<!--<h1  class ="text" >Room Orders Statistics</h1>-->
+<!--<table border="4" >-->
+<!--  <thead>-->
+<!--  <style>-->
+<!--    th, td {-->
+<!--      padding: 10px; /* Thêm khoảng cách bên trong các ô */-->
+<!--    }-->
+<!--  </style>-->
+<!--  <tr>-->
+<!--    <th>Date</th>-->
+<!--    <th>Số đơn đặt phòng</th>-->
+<!--    <th>Phần trăm</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr th:each="p : ${statistics}">-->
+<!--    <td th:text="${p.orderDate}"></td> &lt;!&ndash; Ngày đặt phòng &ndash;&gt;-->
+<!--    <td th:text="${d.numberOfOrders}"></td> &lt;!&ndash; Số đơn đặt phòng &ndash;&gt;-->
+
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<!--</div>-->
+<!---->
+<!---->
+
+
+
+
+
+
+
+<div class="col-md-3">
+<h1  class ="text" >Daily Revenue Report</h1>
+<table border="4" >
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Total Revenue</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="p : ${dailyRevenue}">
+    <td th:text="${p.date}"></td>
+    <td th:text="${#numbers.formatDecimal(p.totalRevenue, 2, 2)}"></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+
+<!---->
+<!---->
+
+
+<!---->
+  </div>
+</section>
+</body>
+</html>
