@@ -92,10 +92,6 @@ public class HomeController {
     }
 
 
-//    @GetMapping("/index")
-//    public String index() {
-//        return "index";
-//    }
 
 
     @GetMapping("/signin")
@@ -175,9 +171,7 @@ public class HomeController {
         System.out.println(" category = " + category);
         List<Category> categories = categoryService.getAllCategory();
         Page<Room> page = null;
-//      List<Room> rooms = roomService.getAllRooms();
 
-//      List<Category> categories = categoryService.getAllActiveCategory();
         List<Room> rooms = roomService.getAllActiveRooms(category);
         int roomsSize = rooms.size();
 
@@ -211,25 +205,6 @@ public class HomeController {
             try {
                 LocalDate checkIn = LocalDate.parse(checkInDate);
                 LocalDate checkOut = LocalDate.parse(checkOutDate);
-
-                // Tính số ngày lưu trú
-//                long stayDuration = roomService.countStayDuration(checkIn, checkOut);
-//                model.addAttribute("stayDuration", stayDuration);
-//
-//                // Tính tổng tiền (subtotal) cho phòng
-//                double subtotal = roomService.calculateSubtotal(stayDuration, room.getDiscountPrice());
-//
-//                // Tính tiền cho các dịch vụ đã chọn
-//                double serviceTotal = roomService.calculateServiceTotal(services);
-//
-//                // Cộng tiền dịch vụ vào subtotal
-//                subtotal += serviceTotal;
-//                model.addAttribute("subtotal", subtotal);
-//                session.setAttribute("services", services);
-//
-//                session.setAttribute("checkIn", checkInDate);
-//                session.setAttribute("checkOut", checkOutDate);
-//
 
 
             } catch (Exception e) {

@@ -43,7 +43,6 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-
     @Autowired
     private RoomService roomService;
 
@@ -55,7 +54,6 @@ public class AdminController {
 
     @Autowired
     private RoomOrderReportService roomOrderReportService;
-
 
     @Autowired
     private RoomOrderRepository roomOrderRepository;
@@ -444,7 +442,6 @@ public class AdminController {
 
         model.addAttribute("reportsJson", reportsJson);
         model.addAttribute("reports", reports);
-//        model.addAttribute("statistics", statistics);
 
 
         List<RoomOrderReport> dailyRevenue = roomOrderRepository.findDailyRevenue();

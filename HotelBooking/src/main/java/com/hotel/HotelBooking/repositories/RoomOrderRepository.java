@@ -13,17 +13,9 @@ public interface RoomOrderRepository extends JpaRepository< RoomOrder,Integer> {
 
 
     List<RoomOrder> findByUserId(Integer userId);
-
-
     RoomOrder findByOrderId(String orderId);
-
-
     @Query("SELECT ro FROM RoomOrder ro JOIN FETCH ro.room WHERE ro.user.id = :userId")
     List<RoomOrder> findByUserIdWithRoom(@Param("userId") Integer userId);
-
-
-
-
 
     @Query("SELECT new com.hotel.HotelBooking.dto.RoomOrderReport(ro.room.id, COUNT(ro)) " +
             "FROM RoomOrder ro " +
@@ -31,32 +23,11 @@ public interface RoomOrderRepository extends JpaRepository< RoomOrder,Integer> {
             "ORDER BY COUNT(ro) DESC")
     List<RoomOrderReport> countRoomOrders();
 
-
-
-
-
-
-
-
-//    @Query("SELECT new com.hotel.HotelBooking.dto.RoomOrderReport(SUM(r.numberOfOrders), r.orderDate) " +
-//            "FROM RoomOrderReport r " +
-//            "GROUP BY r.orderDate " +
-//            "ORDER BY r.orderDate DESC")
-//    List<RoomOrderReport> findOrdersGroupedByDate();
-
-
-
-
     @Query("SELECT new com.hotel.HotelBooking.dto.RoomOrderReport(ro.orderDate, SUM(ro.totalPrice)) " +
             "FROM RoomOrder ro " +
             "GROUP BY ro.orderDate " +
             "ORDER BY SUM(ro.totalPrice) DESC")
     List<RoomOrderReport> findDailyRevenue();
-
-
-
-
-
 
 
 }

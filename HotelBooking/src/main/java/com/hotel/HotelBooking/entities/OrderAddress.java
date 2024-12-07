@@ -14,6 +14,7 @@ public class    OrderAddress  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+<<<<<<< HEAD
     @Column(name = "first_name")
     private String firstName;
 
@@ -36,6 +37,22 @@ public class    OrderAddress  {
     private String state;
 
     @Column(name = "pincode")
+=======
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    private String mobileNo;
+
+    private String address;
+
+    private String city;
+
+    private String state;
+
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     private String pincode;
 
 

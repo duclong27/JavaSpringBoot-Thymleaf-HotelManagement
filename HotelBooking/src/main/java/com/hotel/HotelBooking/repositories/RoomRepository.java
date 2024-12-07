@@ -16,21 +16,13 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
 
     public boolean existsByName(String name);
 
-
     public List<Room> findByIsActiveTrue();
 
     List<Room> findByCategory(String category);
 
     Optional<Room> findById(Integer roomId);
 
-//    @Query("SELECT r FROM Room r WHERE r.category = :category")
-//    List<Room> findByCategory(@Param("category") String category);
-
-
-//    List<Room> findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCase(String ch,String ch2);
-
     List<Room> findByNameContainingIgnoreCase(String name);
-
 
     // Truy vấn đếm số phòng được đặt theo room_id
     @Query("SELECT ro.room.id, COUNT(ro) FROM RoomOrder ro GROUP BY ro.room.id ORDER BY COUNT(ro) DESC")

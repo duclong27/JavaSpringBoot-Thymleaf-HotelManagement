@@ -25,7 +25,6 @@ public interface UserService {
     public Boolean deleteUser(int id);
 
 
-
     public void resetAttempt(int userId);
 
     public void updateUserResetToken(String email, String resetToken);
@@ -39,7 +38,6 @@ public interface UserService {
     public User saveAdmin(User user);
 
     public Boolean existsEmail(String email);
-
 
 
 

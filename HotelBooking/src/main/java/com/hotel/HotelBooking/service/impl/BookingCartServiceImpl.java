@@ -26,14 +26,11 @@ public class BookingCartServiceImpl implements BookingCartService {
 
     @Autowired
     private BookingCartRepository bookingCartRepository;
-
-
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private RoomRepository roomRepository;
-
 
     @Override
     public List<BookingCart> loadAllBookingCart() {
@@ -45,9 +42,7 @@ public class BookingCartServiceImpl implements BookingCartService {
 
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new RuntimeException("Room not found"));
-
         BookingCart bookingCartStatus = bookingCartRepository.findByRoomIdAndUserId(roomId, userId);
-
         LocalDate checkIn = LocalDate.parse(checkInDate);
         LocalDate checkOut = LocalDate.parse(checkOutDate);
 
@@ -63,8 +58,6 @@ public class BookingCartServiceImpl implements BookingCartService {
             bookingCart.setServices(services);
             long duration = ChronoUnit.DAYS.between(checkIn, checkOut);
             bookingCart.setStayDuration((int) duration);
-
-
             bookingCart.setTotalPrice(room.getSubTotal());
         } else {
             // Nếu đã có giỏ hàng, cập nhật thông tin
@@ -81,9 +74,6 @@ public class BookingCartServiceImpl implements BookingCartService {
     }
 
 
-
-
-
     @Override
     public Integer getCountBookingCart(Integer userId) {
         Integer countByUserId = bookingCartRepository.countByUserId(userId);
@@ -98,7 +88,6 @@ public class BookingCartServiceImpl implements BookingCartService {
         Double totalOrderPrice = 0.0;
         List<BookingCart> updateBookingCarts = new ArrayList<>();
 
-
         if (checkInDate == null || checkOutDate == null) {
             throw new IllegalArgumentException("Check-in date and check-out date must not be null");
         }
@@ -106,7 +95,6 @@ public class BookingCartServiceImpl implements BookingCartService {
         LocalDate checkOut = LocalDate.parse(checkOutDate);
         long stayDuration = java.time.temporal.ChronoUnit.DAYS.between(checkIn, checkOut) + 1 ;
         for (BookingCart c : bookingCarts) {
-
             Double totalPrice = c.getRoom().getDiscountPrice() * stayDuration;
             c.setTotalPrice(totalPrice);
             System.out.println("totalPrice : " + totalPrice);
@@ -116,9 +104,7 @@ public class BookingCartServiceImpl implements BookingCartService {
             updateBookingCarts.add(c);
             bookingCartRepository.save(c);
             System.out.println("BookingCart: " + bookingCarts.size());
-
         }
-
         return updateBookingCarts;
     }
 }

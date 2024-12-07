@@ -16,7 +16,6 @@ public interface RoomOrderService {
 
    public List<RoomOrder> getAllRoomOrders();
 
-//   public List<RoomOrder> getOrdersByUser(Integer userId);
 
    public RoomOrder getOrdersByOrderId(String orderId);
 
@@ -27,9 +26,6 @@ public interface RoomOrderService {
    public List<RoomOrder> getAllOrders();
 
    public Page<RoomOrder> getAllOrdersPagination(Integer pageNo, Integer pageSize);
-
-
-
 
 
 

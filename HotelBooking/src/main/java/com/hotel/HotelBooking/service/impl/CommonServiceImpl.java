@@ -11,8 +11,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Service
 public class CommonServiceImpl implements CommonService {
 
-
-
     @Override
     public void removeSessionMessage() {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.getRequestAttributes()))

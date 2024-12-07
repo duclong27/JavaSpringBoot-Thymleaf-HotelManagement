@@ -69,10 +69,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
-
-
-
     @Override
     public Boolean updateAccountStatus(Integer id, Boolean status) {
         Optional<User> findByUser = userRepository.findById(id);
@@ -115,15 +111,12 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
     public void resetAttempt(int userId) {
-
     }
 
     @Override
     public void updateUserResetToken(String email, String resetToken) {
-
     }
 
     @Override

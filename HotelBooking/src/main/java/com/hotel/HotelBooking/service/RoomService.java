@@ -26,17 +26,9 @@ public interface RoomService {
 
     public List<Room> getAllActiveRooms(String category);
 
-//    public List<Room> searchRoom(String ch);
 
     public List<Room> searchRoom(String ch);
 
 
-//    public long countStayDuration(LocalDate checkInDate, LocalDate checkOutDate);
-//
-//
-//    public double calculateSubtotal(long stayDuration, double discountPrice) ;
-//
-//
-//    public double calculateServiceTotal(Map<String, String> services);
 
 }

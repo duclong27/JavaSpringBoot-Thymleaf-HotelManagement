@@ -28,12 +28,17 @@ public class User {
     @Column(name="fullname")
     private String fullName;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     @Column(name="phone_number")
     private String phoneNumber;
 
     @Column(name="email")
     private String email;
 
+<<<<<<< HEAD
     @Column(name="address")
     private String address;
 
@@ -67,8 +72,73 @@ public class User {
     @Column(name="lock_time")
     private Date lockTime;
 
+=======
+
+    @Column(name="address")
+    private String address;
+
+
+    @Column(name="date_of_birth")
+    private LocalDate dateOfBirth;
+
+
+
+
+
+    @Column(name="created_at")
+    private LocalDateTime createdAt;
+
+
+
+
+
+    @Column(name="facebook_account_id")
+    private int facebookAccountId;
+
+
+
+    @Column(name="role")
+    private String role;
+
+
+    @Column(name="password")
+    private String password;
+
+
+    @Column(name="profile_image")
+    private String profileImage;
+
+
+
+    @Column(name="isEnable")
+    private Boolean isEnable;
+
+
+
+    @Column(name="account_non_locked")
+    private Boolean accountNonLocked;
+
+
+
+    @Column(name="failed_attempt")
+    private Integer failedAttempt;
+
+
+
+    @Column(name="lock_time")
+    private Date lockTime;
+
+
+
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     @Column(name="reset_token")
     private String resetToken;
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
 }

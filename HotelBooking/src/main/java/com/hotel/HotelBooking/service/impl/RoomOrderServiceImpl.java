@@ -23,71 +23,17 @@ import java.util.UUID;
 @Service
 public class RoomOrderServiceImpl implements RoomOrderService {
 
-
-
     @Autowired
     private RoomOrderRepository roomOrderRepository;
 
-
-
     @Autowired
     private BookingCartRepository bookingCartRepository;
-
-
-
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private RoomRepository roomRepository;
-
-
-//    @Override
-//    public void saveRoomOrder(Integer userId, OrderRequest orderRequest) throws Exception {
-//        List<BookingCart> bookingCarts = bookingCartRepository.findByUserId(userId);
-//
-//        for(BookingCart bookingCart : bookingCarts ){
-//
-//
-//             RoomOrder roomOrder= new RoomOrder();
-//             roomOrder.setOrderId(UUID.randomUUID().toString());
-//             roomOrder.setOrderDate(LocalDate.now());
-//             roomOrder.setCheckInDate(bookingCart.getCheckInDate());
-//             roomOrder.setCheckOutDate(bookingCart.getCheckOutDate());
-//             roomOrder.setService(bookingCart.getServices());
-//             roomOrder.setPaymentType(orderRequest.getPaymentType());
-//             roomOrder.setStatus(OrderStatus.IN_PROGRESS.getName());
-//             roomOrder.setTotalPrice(bookingCart.getTotalPrice());
-//
-//
-//
-//
-//
-//
-//
-//             OrderAddress orderAddress = new OrderAddress();
-//             OrderAddress address = new OrderAddress();
-//             address.setFirstName(orderRequest.getFirstName());
-//             address.setLastName(orderRequest.getLastName());
-//             address.setEmail(orderRequest.getEmail());
-//             address.setMobileNo(orderRequest.getMobileNo());
-//             address.setAddress(orderRequest.getAddress());
-//             address.setCity(orderRequest.getCity());
-//             address.setState(orderRequest.getState());
-//             address.setPincode(orderRequest.getPincode());
-//
-//            roomOrder.setOrderAddress(address);
-//            User user = userRepository.findById(userId).orElseThrow(() -> new Exception("User not found"));
-//            roomOrder.setUser(user);
-//
-//
-//            RoomOrder saveOrder = roomOrderRepository.save(roomOrder);
-//
-//        }
-//
-//
-//        }
 
 
     @Override
@@ -136,20 +82,11 @@ public class RoomOrderServiceImpl implements RoomOrderService {
     }
 
 
-
-
-
     @Override
     public List<RoomOrder> getAllRoomOrders() {
         return roomOrderRepository.findAll();
     }
 
-//    @Override
-//    public List<RoomOrder> getOrdersByUser(Integer userId) {
-//
-//        List<RoomOrder>  roomOrders = roomOrderRepository.findByUserId(userId);
-//        return  roomOrders ;
-//    }
 
     @Override
     public RoomOrder getOrdersByOrderId(String orderId) {
@@ -183,10 +120,5 @@ public class RoomOrderServiceImpl implements RoomOrderService {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         return roomOrderRepository.findAll(pageable);
     }
-
-
-
-
-
 
 }

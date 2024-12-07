@@ -25,7 +25,6 @@ import java.util.Map;
 public class RoomServiceIpml implements RoomService
 {
 
-
     @Autowired
     private RoomRepository roomRepository;
 
@@ -33,7 +32,6 @@ public class RoomServiceIpml implements RoomService
     public Room saveRoom(Room room) {
         return roomRepository.save(room);
     }
-
 
 
     public List<Room> getAllRooms() {
@@ -53,6 +51,7 @@ public class RoomServiceIpml implements RoomService
        }
        return false;
     }
+
 
     @Override
     public Room getRoomById(Integer id) {
@@ -120,6 +119,7 @@ public class RoomServiceIpml implements RoomService
         return null;
     }
 
+
     @Override
     public List<Room> getAllActiveRooms(String category) {
 
@@ -135,45 +135,6 @@ public class RoomServiceIpml implements RoomService
     public List<Room> searchRoom(String ch) {
         return roomRepository.findByNameContainingIgnoreCase(ch);
     }
-
-
-//    @Override
-//    public List<Room> searchRoom(String ch) {
-//        return roomRepository.findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCase(ch,ch);
-//    }
-
-//    @Override
-//    public long countStayDuration(LocalDate checkInDate, LocalDate checkOutDate) {
-//        return ChronoUnit.DAYS.between(checkInDate, checkOutDate)+1;
-//    }
-//
-//
-//
-//    public double calculateSubtotal(long stayDuration, double discountPrice) {
-//        return stayDuration * discountPrice; // Tính tổng tiền bằng cách nhân stayDuration với discountPrice
-//    }
-//
-//
-//
-//    public double calculateServiceTotal(Map<String, String> services) {
-//        double serviceTotal = 0;
-//
-//        // Duyệt qua các dịch vụ đã chọn và tính tổng tiền
-//        for (String serviceKey : services.keySet()) {
-//            if (serviceKey.startsWith("services[btncheck")) { // Kiểm tra nếu key chứa 'services[btncheck'
-//                switch (serviceKey) {
-//                    case "services[btncheck1]": serviceTotal += 5; break; // Breakfast
-//                    case "services[btncheck2]": serviceTotal += 10; break; // Airport Pickup
-//                    case "services[btncheck3]": serviceTotal += 3; break;  // Suitcase
-//                    case "services[btncheck4]": serviceTotal += 7; break;  // Restaurant
-//                    case "services[btncheck5]": serviceTotal += 4; break;  // Lounge
-//                    case "services[btncheck6]": serviceTotal += 15; break; // Massage
-//                }
-//            }
-//        }
-//
-//        return serviceTotal;
-//    }
 
 
 

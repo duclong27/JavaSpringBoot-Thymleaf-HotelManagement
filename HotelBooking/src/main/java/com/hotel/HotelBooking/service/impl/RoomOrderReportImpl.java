@@ -11,12 +11,8 @@ import java.util.List;
 @Service
 public class RoomOrderReportImpl implements RoomOrderReportService {
 
-
-     @Autowired
+    @Autowired
     private RoomOrderRepository roomOrderRepository;
-
-
-
 
     @Override
     public List<RoomOrderReport> getRoomOrderReport() {
@@ -24,30 +20,5 @@ public class RoomOrderReportImpl implements RoomOrderReportService {
     }
 
 
-
-//    @Override
-//    public List<RoomOrderReport> getOrdersStatistics() {
-//        return roomOrderRepository.findOrdersGroupedByDate();
-//    }
-//
-
-//    @Override
-//    public List<RoomOrderReport> getOrdersStatistics() {
-//        List<RoomOrderReport> reports = roomOrderRepository.findOrdersGroupedByDate();
-//        if (reports == null || reports.isEmpty()) {
-//            System.out.println("22222");
-//        } else {
-//            reports.forEach(report -> {
-//                System.out.println("Ngày: " + report.getOrderDate() + ", Số lượt đặt: " + report.getNumberOfOrders());
-//            });
-//        }
-//        return reports;
-//    }
-
-
-
-//    public List<RoomOrderReport> getRoomOrderStatistics() {
-//        return roomOrderRepository.countRoomOrders();
-//    }
 
 }

@@ -35,6 +35,7 @@ public class UserController {
 
     @Autowired
     private CategoryService categoryService;
+
     @Autowired
     private UserService userService;
 
@@ -44,16 +45,12 @@ public class UserController {
     @Autowired
     private RoomOrderService roomOrderService;
 
-
     @Autowired
     private BookingCartService bookingCartService;
 
+
     @Autowired
     private RoomService roomService;
-
-
-
-
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -71,9 +68,6 @@ public class UserController {
         List<Category> allActiveCategory = categoryService.getAllActiveCategory();
         m.addAttribute("categories", allActiveCategory);
     }
-
-
-
 
 
     @GetMapping("/addCart")
@@ -100,20 +94,12 @@ public class UserController {
     }
 
 
-
-
-
-
-
     @GetMapping("/viewCart")
     public String viewCart(Model m, Principal p, HttpSession session,
                            @RequestParam(required = false) String checkInDate,
                            @RequestParam(required = false) String checkOutDate) {
 
-
         User user = getLoggedInUserDetails(p);
-
-
         if (checkInDate == null) {
             checkInDate = (String) session.getAttribute("checkIn");
         }
@@ -137,8 +123,6 @@ public class UserController {
             m.addAttribute("bookingCarts", bookingCarts);
             int cartSize = bookingCarts.size();
             System.out.println("Carts size: " +cartSize);
-
-
             // Tính tổng giá trị đơn hàng
             Double totalOrderPrice = 0.0;
             for (BookingCart bookingCart : bookingCarts) {
@@ -150,11 +134,9 @@ public class UserController {
             m.addAttribute("error", e.getMessage());
             return "/user1/cart";
         }
-
 //         Thêm ngày check-in và check-out vào model
         m.addAttribute("checkInDate", checkInDate);
         m.addAttribute("checkOutDate", checkOutDate);
-
         // Lấy dịch vụ và subtotal từ session
         Map<String, String> services = (Map<String, String>) session.getAttribute("services");
         m.addAttribute("services", services);
@@ -166,23 +148,11 @@ public class UserController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     private User getLoggedInUserDetails(Principal p) {
         String email = p.getName();
         User user = userService.getUserByEmail(email);
         return user;
     }
-
 
 
     @GetMapping("/orders")
@@ -231,12 +201,11 @@ public class UserController {
         return "redirect:/users/success";
     }
 
+
     @GetMapping("/success")
     public String loadSuccess() {
         return "/user1/success";
     }
-
-
 
 
     @GetMapping("/user-orders")
@@ -246,48 +215,28 @@ public class UserController {
                           HttpSession session) {
         User loginUser = getLoggedInUserDetails(p);
         List<RoomOrder> roomOrders = roomOrderService.getOrdersByUser(loginUser.getId());
-
         List<RoomOrder> roomOrders1 = roomOrderRepository.findAll();
-
         m.addAttribute("roomOrders1", roomOrders1);
-
         m.addAttribute("roomOrders", roomOrders);
-
-
         if (checkInDate == null) {
             checkInDate = (String) session.getAttribute("checkIn");
         }
         if (checkOutDate == null) {
             checkOutDate = (String) session.getAttribute("checkOut");
         }
-
-
-
         return "/user1/my_order";
-
-
     }
 
     @GetMapping("/update-status")
     public String updateOrderStatus(@RequestParam Integer id, @RequestParam Integer st, HttpSession session) {
-
         OrderStatus[] values = OrderStatus.values();
         String status = null;
-
         for (OrderStatus orderSt : values) {
             if (orderSt.getId().equals(st)) {
                 status = orderSt.getName();
             }
         }
-
         RoomOrder updateOrder = roomOrderService.updateRoomOrderStatus(id, status);
-
-//        try {
-//            commonUtil.sendMailForProductOrder(updateOrder, status);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
         if (!ObjectUtils.isEmpty(updateOrder)) {
             session.setAttribute("succMsg", "Status Updated");
         } else {
@@ -299,9 +248,9 @@ public class UserController {
 
     @GetMapping("/viewProfile")
     public String viewProfile(){
-
         return "/user1/profile";
     }
+
 
     @PostMapping("/update-profile")
     public String updateProfile(@ModelAttribute User user, @RequestParam MultipartFile img, HttpSession session) {
@@ -315,15 +264,11 @@ public class UserController {
     }
 
 
-
-
     @PostMapping("/change-password")
     public String changePassword(@RequestParam String newPassword, @RequestParam String currentPassword, Principal p,
                                  HttpSession session) {
         User loggedInUserDetails = getLoggedInUserDetails(p);
-
         boolean matches = passwordEncoder.matches(currentPassword, loggedInUserDetails.getPassword());
-
         if (matches) {
             String encodePassword = passwordEncoder.encode(newPassword);
             loggedInUserDetails.setPassword(encodePassword);
@@ -338,14 +283,7 @@ public class UserController {
         }
 
         return "redirect:/user1/profile";
-
-
     }
-
-
-
-
-
 
 
 }

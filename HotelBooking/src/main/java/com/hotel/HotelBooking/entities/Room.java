@@ -25,10 +25,18 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     @NotBlank(message = "Name is required")
     @Column(name="name",length = 50 )
     private String name;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     @Column(name = "status")
     private String isActive;
 
@@ -44,6 +52,7 @@ public class Room {
     @Column(name = "discountPrice")
     private Double discountPrice;
 
+<<<<<<< HEAD
     @Column(name="capacity")
     private int capacity;
 
@@ -58,6 +67,26 @@ public class Room {
 
     @Column(name = "subtotal")
     private Double subTotal;
+=======
+
+    @Column(name="capacity")
+    private int capacity;
+
+
+    @Column(name ="image")
+    private String image;
+
+
+    @Column(name = "category")
+    private String category;
+
+
+     @Column(name="stock")
+     private int stock;
+
+     @Column(name = "subtotal")
+     private Double subTotal;
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
 
     @Override
     public String toString() {

@@ -4,7 +4,11 @@
 <head>
 
 </head>
+<<<<<<< HEAD
 <body>
+=======
+<body  >
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
 <section th:fragment="section" >
 
   <style>
@@ -28,7 +32,11 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng cho bảng */
     }
     .text{
+<<<<<<< HEAD
       margin-left: 200px;
+=======
+      margin-left: 120px;
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
       margin-top: 50px;
     }
 
@@ -66,6 +74,7 @@
     .col-md-4 {
       padding: 10px;
     }
+<<<<<<< HEAD
     .row .col-md-5,
     .row .col-md-5 {
       display: flex;
@@ -77,6 +86,8 @@
       align-items: stretch; /* Các cột sẽ cùng chiều cao */
     }
 
+=======
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
   </style>
 <!--<div id="chart_div" style="width: 900px; height: 500px;"></div>-->
 
@@ -85,6 +96,7 @@
 
 
 
+<<<<<<< HEAD
   <div class="row mt-5" >
     <div class="col-md-5 ">
          <table>
@@ -118,6 +130,41 @@
 
 
 
+=======
+  <div class="row mt-5 " >
+  <div class="col-md-5 off-set-1 ">
+<table>
+  <h2 class ="text" >Room order statistics</h2>
+
+  <div th:if="${error}">
+    <p th:text="${error}"></p>
+  </div>
+
+  <table class="padding-20px" border="4">
+    <thead>
+    <style>
+      th, td {
+        padding: 10px; /* Thêm khoảng cách bên trong các ô */
+      }
+    </style>
+    <tr>
+      <th>Room Id</th>
+      <th>Booked times</th>
+      <th>Percentage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${reports}">
+      <td th:text="${p.roomId}"></td>
+      <td th:text="${p.numberOfOrders}"></td>
+      <td th:text="${p.percentage} + '%'"></td> <!-- Hiển thị phần trăm -->
+    </tr>
+    </tbody>
+  </table>
+</table>
+
+</div>
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
 
 
 
@@ -127,6 +174,7 @@
 
 
 <!---->
+<<<<<<< HEAD
             <div class="col-md-6 mt-4  ">
                <h1  class ="text" >Daily Revenue Report</h1>
                     <table border="4" >
@@ -144,6 +192,67 @@
                        </tbody>
                    </table>
             </div>
+=======
+<!--<div class="col-md-3 off-set-1">-->
+<!--<h1  class ="text" >Room Orders Statistics</h1>-->
+<!--<table border="4" >-->
+<!--  <thead>-->
+<!--  <style>-->
+<!--    th, td {-->
+<!--      padding: 10px; /* Thêm khoảng cách bên trong các ô */-->
+<!--    }-->
+<!--  </style>-->
+<!--  <tr>-->
+<!--    <th>Date</th>-->
+<!--    <th>Số đơn đặt phòng</th>-->
+<!--    <th>Phần trăm</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr th:each="p : ${statistics}">-->
+<!--    <td th:text="${p.orderDate}"></td> &lt;!&ndash; Ngày đặt phòng &ndash;&gt;-->
+<!--    <td th:text="${d.numberOfOrders}"></td> &lt;!&ndash; Số đơn đặt phòng &ndash;&gt;-->
+
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<!--</div>-->
+<!---->
+<!---->
+
+
+
+
+
+
+
+<div class="col-md-3">
+<h1  class ="text" >Daily Revenue Report</h1>
+<table border="4" >
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Total Revenue</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="p : ${dailyRevenue}">
+    <td th:text="${p.date}"></td>
+    <td th:text="${#numbers.formatDecimal(p.totalRevenue, 2, 2)}"></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+
+<!---->
+<!---->
+
+
+<!---->
+>>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
   </div>
 </section>
 </body>
