@@ -26,10 +26,7 @@ public class BookingCart {
     @ManyToOne
     private Room room;
 
-<<<<<<< HEAD
     @Column(name = "stay_duration")
-=======
->>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     private Integer stayDuration;
 
     @Column(name = "total_price")
@@ -38,7 +35,6 @@ public class BookingCart {
     @Column(name = "total_order_price")
     private Double totalOrderPrice;
 
-<<<<<<< HEAD
     @Column(name = "check_in_date")
     private LocalDate checkInDate;
 
@@ -46,15 +42,6 @@ public class BookingCart {
     private LocalDate checkOutDate;
 
     @Column(name = "services")
-=======
-
-    private LocalDate checkInDate;
-
-
-    private LocalDate checkOutDate;
-
-
->>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     private String services;
 
 }

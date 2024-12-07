@@ -1,13 +1,6 @@
 package com.hotel.HotelBooking.entities;
 
-<<<<<<< HEAD
 import jakarta.persistence.*;
-=======
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
->>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -18,7 +11,6 @@ public class OrderRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-<<<<<<< HEAD
     @Column(name = "first_name")
     private String firstName;
 
@@ -53,29 +45,5 @@ public class OrderRequest {
     private LocalDate checkOutDate;
 
     @Column(name = "service")
-=======
-    private String firstName;
-
-    private String lastName;
-
-    private String email;
-
-    private String mobileNo;
-
-    private String address;
-
-    private String city;
-
-    private String state;
-
-    private String pincode;
-
-    private String paymentType;
-
-    private LocalDate checkInDate;
-
-    private LocalDate checkOutDate;
-
->>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     private String service;
 }

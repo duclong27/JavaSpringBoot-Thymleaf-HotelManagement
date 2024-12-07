@@ -17,7 +17,6 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-<<<<<<< HEAD
     @Column(name = "name")
     private String name;
 
@@ -25,13 +24,6 @@ public class Category {
     private String imageName;
 
     @Column(name = "is_active")
-=======
-
-    private String name;
-
-    private String imageName;
-
->>>>>>> aa46548bc9d431e305071582f51aedf8bc376dc7
     private String isActive;
 
     @Override
