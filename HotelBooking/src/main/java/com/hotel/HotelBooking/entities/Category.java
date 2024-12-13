@@ -13,7 +13,6 @@ import lombok.*;
 @Table(name="categories1")
 
 public class Category {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,7 +24,6 @@ public class Category {
 
     @Column(name = "is_active")
     private String isActive;
-
     @Override
     public String toString() {
         return "Category{name='" + name + "'}";

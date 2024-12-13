@@ -13,9 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room,Integer> {
-
     public boolean existsByName(String name);
-
     public List<Room> findByIsActiveTrue();
 
     List<Room> findByCategory(String category);

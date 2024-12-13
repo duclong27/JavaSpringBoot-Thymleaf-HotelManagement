@@ -41,10 +41,6 @@ public class UserController {
     private RoomOrderService roomOrderService;
     @Autowired
     private BookingCartService bookingCartService;
-
-    @Autowired
-    private RoomService roomService;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 

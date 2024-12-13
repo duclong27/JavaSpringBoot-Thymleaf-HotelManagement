@@ -24,7 +24,6 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @NotBlank(message = "Name is required")
     @Column(name="name",length = 50 )
     private String name;

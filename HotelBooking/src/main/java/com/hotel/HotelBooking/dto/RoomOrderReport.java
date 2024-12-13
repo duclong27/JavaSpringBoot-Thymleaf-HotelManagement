@@ -13,25 +13,14 @@ import java.time.LocalDate;
 @Table(name="RoomOrderReport")
 
 public class RoomOrderReport {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private int roomId;
-
     private long numberOfOrders;
-
     private LocalDate date;
-
     private double totalRevenue;
-
     private double percentage;
-
-
-
-
 
     public RoomOrderReport(double percentage) {
         this.percentage = percentage;
@@ -47,52 +36,39 @@ public class RoomOrderReport {
         this.date = date;
         this.totalRevenue = totalRevenue;
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public int getRoomId() {
         return roomId;
     }
-
     public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
-
     public long getNumberOfOrders() {
         return numberOfOrders;
     }
-
-
     public void setNumberOfOrders(long numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
     }
-
     public LocalDate getDate() {
         return date;
     }
-
     public void setDate(LocalDate date) {
         this.date = date;
     }
-
     public double getPercentage() {
         return percentage;
     }
-
     public void setPercentage(double percentage) {
         this.percentage = percentage;
     }
-
     public double getTotalRevenue() {
         return totalRevenue;
     }
-
     public void setTotalRevenue(double totalRevenue) {
         this.totalRevenue = totalRevenue;
     }

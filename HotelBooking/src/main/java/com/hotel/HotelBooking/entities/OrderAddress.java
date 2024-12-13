@@ -7,13 +7,10 @@ import lombok.Data;
 @Data
 @Entity
 
-public class    OrderAddress  {
-
-
+public class OrderAddress{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
 
     @Column(name = "first_name")
     private String firstName;
@@ -38,6 +35,5 @@ public class    OrderAddress  {
 
     @Column(name = "pincode")
     private String pincode;
-
 
 }

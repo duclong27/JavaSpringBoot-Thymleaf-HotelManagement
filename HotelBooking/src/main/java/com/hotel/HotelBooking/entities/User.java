@@ -18,9 +18,6 @@ import java.util.Date;
 @Builder
 @Table(name="users2")
 public class User {
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -189,6 +189,7 @@ public class HomeController {
         return "room_details";
     }
 
+
      @GetMapping("/search")
           public String searchRoom(@RequestParam String ch, Model m) {
               List<Room> searchRooms = roomService.searchRoom(ch);

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface BookingCartRepository extends JpaRepository<BookingCart,Integer> {
-
     public BookingCart findByRoomIdAndUserId(Integer roomId, Integer userId);
     public List<BookingCart> findByUserId(int id);
     public Integer countByUserId(Integer userId);
