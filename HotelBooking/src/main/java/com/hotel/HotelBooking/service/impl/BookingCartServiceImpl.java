@@ -39,15 +39,12 @@ public class BookingCartServiceImpl implements BookingCartService {
 
     @Override
     public BookingCart saveBookingCart(int roomId, int userId, String checkInDate, String checkOutDate, String services) {
-
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         Room room = roomRepository.findById(roomId).orElseThrow(() -> new RuntimeException("Room not found"));
         BookingCart bookingCartStatus = bookingCartRepository.findByRoomIdAndUserId(roomId, userId);
         LocalDate checkIn = LocalDate.parse(checkInDate);
         LocalDate checkOut = LocalDate.parse(checkOutDate);
-
         BookingCart bookingCart = null;
-
         if (ObjectUtils.isEmpty(bookingCartStatus)) {
             // Nếu chưa có giỏ hàng, tạo mới
             bookingCart = new BookingCart();
@@ -69,7 +66,6 @@ public class BookingCartServiceImpl implements BookingCartService {
             bookingCart.setTotalPrice(bookingCart.getTotalPrice());
             bookingCart.setTotalOrderPrice(bookingCart.getTotalOrderPrice());
         }
-
         return bookingCartRepository.save(bookingCart);
     }
 
@@ -87,7 +83,6 @@ public class BookingCartServiceImpl implements BookingCartService {
         System.out.println("BookingCart: " + bookingCarts.size());
         Double totalOrderPrice = 0.0;
         List<BookingCart> updateBookingCarts = new ArrayList<>();
-
         if (checkInDate == null || checkOutDate == null) {
             throw new IllegalArgumentException("Check-in date and check-out date must not be null");
         }

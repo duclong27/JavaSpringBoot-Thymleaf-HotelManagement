@@ -35,43 +35,6 @@
                          height="550px">
                 </div>
 
-
-<!--                                    <div class="col-md-6 text-end" style="margin-top: 80px; margin-left: 10px;margin-bottom: 20px">-->
-<!--                                        <form method="get" action="#">-->
-<!--                                            <label for="checkInDate" class="form-label"> Check-in</label>-->
-<!--                                            <input type="date" id="checkInDate" name="checkInDate" required onchange="updateCheckOutMinDate()">-->
-
-<!--                                            <label for="checkOutDate" class="form-label mt-3"> Check-out</label>-->
-<!--                                            <input type="date" class="form-control" id="checkOutDate" name="checkOutDate" required>-->
-
-<!--                                            <button type="submit">Summnit</button>-->
-<!--                                        </form>-->
-<!--                                    </div>-->
-<!--                                    <div class = "col-md-6">-->
-<!--                                        <div class="mb-3">-->
-<!--                                            <h5 class="text-primary">Service Included</h5> &lt;!&ndash; Tiêu đề cho các checkbox &ndash;&gt;-->
-<!--                                            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">-->
-<!--                                                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">-->
-<!--                                                <label class="btn btn-outline-primary" for="btncheck1">Breakfirst Included </label>-->
-
-<!--                                                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">-->
-<!--                                                <label class="btn btn-outline-primary" for="btncheck2">Pick up at the airport</label>-->
-
-<!--                                                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">-->
-<!--                                                <label class="btn btn-outline-primary" for="btncheck3">Taking the suitcase</label>-->
-
-<!--                                                <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">-->
-<!--                                                <label class="btn btn-outline-primary" for="btncheck4">Restaurant </label>-->
-
-<!--                                                <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">-->
-<!--                                                <label class="btn btn-outline-primary" for="btncheck5">Lounge</label>-->
-
-<!--                                                <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">-->
-<!--                                                <label class="btn btn-outline-primary" for="btncheck6">Massage at the room</label>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
                 <form method="get" action="#">
                     <div class="col-md-3 text-end" style="margin-top: 80px; margin-left: 10px; margin-bottom: 20px">
                         <label for="checkInDate" class="form-label">Check-in</label>
@@ -102,11 +65,7 @@
                         <input type="checkbox" class="btn-check" id="btncheck6" name="services" value="Massage at the room" autocomplete="off" onchange="updateAddToCartLink()">
                         <label class="btn btn-outline-primary" for="btncheck6">Massage at the room</label>
                     </div>
-
-
-
                 </form>
-
                 <div class="col-md-12">
                     <p class="fs-3">[[${room.name}]]</p>
                     <p>
@@ -133,8 +92,6 @@
                         <span th:text="${subtotal != null ? subtotal : 'N/A'}">0</span> VND
                     </p>
                 </div>
-
-
                 <p class="fs-5 fw-bold">
                     Price :&nbsp; &nbsp; &nbsp; &nbsp;<i class="fas fa-dollar-sign"></i>
                     [[${room.discountPrice}]] per 1 day 1 night <span
@@ -142,7 +99,6 @@
                     <span class="fs-6  text-success">[[${room.discount}]]%
                                     off</span>
                 </p>
-
                 <div class="row">
                     <div class="col-md-4 text-success text-center p-2">
                         <i class="fas fa-money-bill-wave fa-2x"></i>
@@ -157,19 +113,16 @@
                         <p>Free Shipping</p>
                     </div>
                 </div>
-
                 <th:block th:if="${room.stock>0}">
                     <th:block th:if="${user==null}">
                         <a href="/identity/signin" class="btn btn-danger col-md-12">Add To
                             Cart</a>
                     </th:block>
-
                     <th:block th:if="${user != null}">
                         <a id="addToCartLink" th:href="@{'/users/addCart?rid=' + ${room.id} + '&uid=' + ${user.id}}"
                            class="btn btn-danger col-md-12">Add To Cart</a>
 
                     </th:block>
-
                     <input type="hidden" th:value="${room.id}">
                     <input type="hidden" th:value="${room.id}" id="roomId">
                     <input type="hidden" th:value="${user.id}" id="userId">
@@ -181,46 +134,33 @@
                             const checkOutDateInput = document.getElementById('checkOutDate');
                             const checkInDate = new Date(checkInDateInput.value);
                             const checkOutDate = new Date(checkOutDateInput.value);
-
                             const roomId = document.getElementById('roomId').value;
                             const userId = document.getElementById('userId').value;
                             const addToCartLink = document.getElementById('addToCartLink');
-
                             const selectedServices = Array.from(document.querySelectorAll("input[name='services']:checked"))
                                 .map(service => service.value)
                                 .join(',');
-
                             if (checkInDate < today) {
                                 alert("Ngày check-in không thể sớm hơn hôm nay!");
                                 checkInDateInput.value = "";
                                 return;
                             }
-
                             if (checkOutDate <= checkInDate) {
                                 alert("Ngày check-out phải sau ngày check-in!");
                                 checkOutDateInput.value = "";
                                 return;
                             }
-
                             if (checkInDate && checkOutDate) {
                                 const currentHref = addToCartLink.getAttribute('href').split('?')[0];
                                 const newHref = `${currentHref}?rid=${roomId}&uid=${userId}&checkInDate=${checkInDateInput.value}&checkOutDate=${checkOutDateInput.value}&services=${selectedServices}`;
                                 addToCartLink.setAttribute('href', newHref);
                             }
                         }
-
-
                     </script>
-
-
-
-
                 </th:block>
-
                 <th:block th:unless="${room.stock>0}">
                     <a href="#" class="btn text-white btn-warning col-md-12">Fully booked</a>
                 </th:block>
-
             </div>
         </div>
     </div>

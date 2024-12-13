@@ -32,14 +32,10 @@ public class AuthFailureHandlerImpl extends SimpleUrlAuthenticationFailureHandle
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
-
         String email = request.getParameter("username");
-
         User user = userRepository.findByEmail(email);
-
         if (user.getIsEnable()) {
             if (user.getAccountNonLocked()) {
-
                 if (user.getFailedAttempt() < AppConstant.ATTEMPT_TIME) {
                     userService.increaseFailedAttempt(user);
                 } else {
@@ -47,18 +43,15 @@ public class AuthFailureHandlerImpl extends SimpleUrlAuthenticationFailureHandle
                     exception = new LockedException("Your account is locked !! failed attempt 3");
                 }
             } else {
-
                 if (userService.unlockAccountTimeExpired(user)) {
                     exception = new LockedException("Your account is unlocked !! Please try to login");
                 } else {
                     exception = new LockedException("your account is Locked !! Please try after sometimes");
                 }
             }
-
         } else {
             exception = new LockedException("your account is inactive");
         }
-
         super.setDefaultFailureUrl("/signin?error");
         super.onAuthenticationFailure(request, response, exception);
     }

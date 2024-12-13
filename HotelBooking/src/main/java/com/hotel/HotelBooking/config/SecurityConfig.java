@@ -44,25 +44,23 @@ public class SecurityConfig {
         return authenticationProvider;
     }
 
-        @Bean
-        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-            http.csrf(csrf -> csrf.disable())
-                    .cors(cors -> cors.disable())
-                    .authorizeHttpRequests(req -> req
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.disable())
+                .authorizeHttpRequests(req -> req
                             .requestMatchers("/user/**").hasRole("USER") // Thêm /identity trước đường dẫn
                             .requestMatchers("/admin/**").hasRole("ADMIN") // Thêm /identity trước đường dẫn
                             .requestMatchers("/**").permitAll()  // Thêm /identity trước đường dẫn
-                    )
-                    .formLogin(form -> form
+                )
+                .formLogin(form -> form
                             .loginPage("/signin")  // Thêm /identity trước đường dẫn loginPage
                             .loginProcessingUrl("/login")  // Thêm /identity trước đường dẫn loginProcessingUrl
                             .failureHandler(authenticationFailureHandler)
                             .successHandler(authenticationSuccessHandler)
-                    )
-                    .logout(logout -> logout.permitAll());
-
+                )
+                .logout(logout -> logout.permitAll());
             return http.build();
         }
-
-
 }

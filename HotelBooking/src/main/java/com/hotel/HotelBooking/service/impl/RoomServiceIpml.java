@@ -24,15 +24,12 @@ import java.util.Map;
 @Service
 public class RoomServiceIpml implements RoomService
 {
-
     @Autowired
     private RoomRepository roomRepository;
-
     @Override
     public Room saveRoom(Room room) {
         return roomRepository.save(room);
     }
-
 
     public List<Room> getAllRooms() {
         List<Room> rooms = roomRepository.findAll();
@@ -40,11 +37,10 @@ public class RoomServiceIpml implements RoomService
         return rooms;
     }
 
+
     @Override
     public Boolean deleteRoom(Integer id) {
-
        Room room = roomRepository.findById(id).orElseThrow(null);
-
        if (!ObjectUtils.isEmpty(room)){
            roomRepository.delete(room);
            return true;
@@ -71,12 +67,9 @@ public class RoomServiceIpml implements RoomService
 
     @Override
     public Room updateRoom(Room room, MultipartFile image) {
-
         Room dbRoom = getRoomById(room.getId());
-
         // Nếu có ảnh mới, sử dụng tên của ảnh mới, ngược lại giữ nguyên tên ảnh cũ
         String imageName = image.isEmpty() ? dbRoom.getImage() : image.getOriginalFilename();
-
         // Cập nhật các thuộc tính của phòng
         dbRoom.setName(room.getName());
         dbRoom.setDescription(room.getDescription());
@@ -87,29 +80,22 @@ public class RoomServiceIpml implements RoomService
         dbRoom.setImage(imageName); // Cập nhật tên ảnh
         dbRoom.setIsActive(room.getIsActive());
         dbRoom.setDiscount(room.getDiscount());
-
         Double disocunt = room.getPrice() * (room.getDiscount() / 100.0);
         Double discountPrice = room.getPrice() - disocunt;
         dbRoom.setDiscountPrice(discountPrice);
-
         // Lưu đối tượng Room đã cập nhật vào cơ sở dữ liệu
         Room updatedRoom = roomRepository.save(dbRoom);
-
         // Kiểm tra nếu lưu thành công
         if (!ObjectUtils.isEmpty(updatedRoom)) {
-
             // Nếu có ảnh mới, tiến hành lưu ảnh vào đường dẫn chỉ định
             if (!image.isEmpty()) {
                 try {
                     // Đường dẫn thư mục lưu ảnh
                     File saveDir = new ClassPathResource("static/img/HinhAnh/Ecommerce Spring Boot/category_img").getFile();
-
                     // Tạo đường dẫn đầy đủ để lưu ảnh
                     Path path = Paths.get(saveDir.getAbsolutePath() + File.separator + image.getOriginalFilename());
-
                     // Copy ảnh vào đường dẫn mới, ghi đè nếu ảnh đã tồn tại
                     Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -31,23 +31,16 @@ import java.util.Map;
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @RequiredArgsConstructor // Thêm annotation này để tự động tạo constructor cho field UserService
 public class UserController {
-
-
     @Autowired
     private CategoryService categoryService;
-
     @Autowired
     private UserService userService;
-
     @Autowired
     private RoomOrderRepository roomOrderRepository;
-
     @Autowired
     private RoomOrderService roomOrderService;
-
     @Autowired
     private BookingCartService bookingCartService;
-
 
     @Autowired
     private RoomService roomService;
@@ -64,7 +57,6 @@ public class UserController {
             Integer countBookingCart = bookingCartService.getCountBookingCart(user.getId());
             m.addAttribute("countCart", countBookingCart);
         }
-
         List<Category> allActiveCategory = categoryService.getAllActiveCategory();
         m.addAttribute("categories", allActiveCategory);
     }
@@ -82,7 +74,6 @@ public class UserController {
         BookingCart saveBookingCart = bookingCartService.saveBookingCart(rid, uid, checkInDate, checkOutDate, services);
         session.setAttribute("checkIn", checkInDate);
         session.setAttribute("checkOut", checkOutDate);
-
         if (saveBookingCart != null) {
             session.setAttribute("succMsg", "Room added to cart successfully");
         } else {
@@ -98,7 +89,6 @@ public class UserController {
     public String viewCart(Model m, Principal p, HttpSession session,
                            @RequestParam(required = false) String checkInDate,
                            @RequestParam(required = false) String checkOutDate) {
-
         User user = getLoggedInUserDetails(p);
         if (checkInDate == null) {
             checkInDate = (String) session.getAttribute("checkIn");
@@ -106,13 +96,11 @@ public class UserController {
         if (checkOutDate == null) {
             checkOutDate = (String) session.getAttribute("checkOut");
         }
-
         // Kiểm tra giá trị ngày check-in và check-out
         if (checkInDate == null || checkOutDate == null) {
             m.addAttribute("error", "Please select check-in and check-out dates.");
             return "/user1/cart";
         }
-
         try {
             // Gọi phương thức service để lấy danh sách giỏ hàng
             List<BookingCart> bookingCarts = bookingCartService.getBookingCartsByUser(user.getId(), checkInDate, checkOutDate);
@@ -140,7 +128,6 @@ public class UserController {
         // Lấy dịch vụ và subtotal từ session
         Map<String, String> services = (Map<String, String>) session.getAttribute("services");
         m.addAttribute("services", services);
-
         Double subtotal = (Double) session.getAttribute("subtotal");
         m.addAttribute("subtotal", subtotal);
 
@@ -158,8 +145,6 @@ public class UserController {
     @GetMapping("/orders")
     public String orderPage(Principal p, Model m, String checkInDate,
                              String checkOutDate,HttpSession session) {
-
-
         if (checkInDate == null) {
             checkInDate = (String) session.getAttribute("checkIn");
         }
@@ -284,8 +269,6 @@ public class UserController {
 
         return "redirect:/user1/profile";
     }
-
-
 }
 
 

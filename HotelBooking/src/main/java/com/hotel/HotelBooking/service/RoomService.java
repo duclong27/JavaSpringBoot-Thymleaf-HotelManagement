@@ -26,7 +26,6 @@ public interface RoomService {
 
     public List<Room> getAllActiveRooms(String category);
 
-
     public List<Room> searchRoom(String ch);
 
 

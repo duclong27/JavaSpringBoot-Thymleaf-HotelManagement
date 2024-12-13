@@ -12,11 +12,8 @@ import java.util.List;
 public interface BookingCartService {
 
     public List<BookingCart> loadAllBookingCart();
-
     public BookingCart saveBookingCart(int roomId, int userId,  String checkInDate, String checkOutDate, String services);
-
     public Integer getCountBookingCart(Integer userId);
-
     public List<BookingCart> getBookingCartsByUser(Integer userId, String checkInDate, String checkOutDate);
 
 }

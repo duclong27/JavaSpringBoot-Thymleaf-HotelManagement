@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
 <!-- Start Navbar  -->
 <nav class="navbar navbar-expand-lg   fixed-top navbar-dark custom-navbar ">
     <div class="container-fluid">
@@ -29,12 +28,6 @@
                                             aria-current="page" href="/identity/index"><i class="fa-solid fa-house"></i>
                         Home</a></li>
                 </th:block>
-<!--                <th:block th:if="${user!=null}">-->
-<!--                    <li class="nav-item"><a class="nav-link active"-->
-<!--                                            aria-current="page" href="/identity/index"><i class="fa-solid fa-house"></i>-->
-<!--                        Home</a></li>-->
-<!--                </th:block>-->
-
                 <th:block th:unless="${user==null}">
                     <li class="nav-item" th:if="${user.role=='ROLE_ADMIN'}"><a
                             class="nav-link active" aria-current="page" href="/identity/admin"><i
@@ -45,9 +38,6 @@
                            "><i
                             class="fa-solid fa-house"></i> Home </a></li>
                 </th:block>
-
-
-
                 <li class="nav-item"><a class="nav-link active"
                                         aria-current="page" href="/identity/rooms">Room</a></li>
 
@@ -57,9 +47,7 @@
                     <ul class="dropdown-menu">
                         <li th:each="c:${categories}"><a class="dropdown-item"
                                                         th:href="@{'/rooms?category='+${c.name}}">[[${c.name}]]</a></li>
-
                     </ul></li>
-
             </ul>
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -72,12 +60,8 @@
 
                     <li class="nav-item"><a class="nav-link active"
                                             aria-current="page" href="#">ADMIN</a></li>
-
                 </th:block>
-
                 <th:block th:if="${user!=null and user.role == 'ROLE_ADMIN' }">
-
-
                     <li class="nav-item dropdown"><a
                             class="nav-link dropdown-toggle active" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -119,12 +103,7 @@
                                             aria-current="page" href="/identity/logout"><i
                             class="fa-solid fa-right-to-bracket"></i> Logout</a></li>
                 </th:block>
-
-
-
-
             </ul>
-
         </div>
     </div>
 </nav>

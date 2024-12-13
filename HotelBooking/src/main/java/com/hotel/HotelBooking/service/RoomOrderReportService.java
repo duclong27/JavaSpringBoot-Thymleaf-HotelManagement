@@ -8,8 +8,5 @@ public interface RoomOrderReportService {
 
     public List<RoomOrderReport> getRoomOrderReport();
 
-//    public List<RoomOrderReport> getOrdersStatistics();
-
-
 
 }

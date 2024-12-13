@@ -24,20 +24,9 @@ public interface UserService {
 
     public Boolean deleteUser(int id);
 
-
-    public void resetAttempt(int userId);
-
-    public void updateUserResetToken(String email, String resetToken);
-
-    public User getUserByToken(String token);
-
     public User updateUser(User user);
 
     public User updateUserProfile(User user, MultipartFile img);
-
-    public User saveAdmin(User user);
-
-    public Boolean existsEmail(String email);
 
 
 

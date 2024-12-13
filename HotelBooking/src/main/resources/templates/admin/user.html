@@ -60,7 +60,6 @@
                         <th scope="col">Email</th>
                         <th scope="col">Facebook account id</th>
                         <th scope="col">Failed Attempt</th>
-
                         <th scope="col">Is enable</th>
                         <th scope="col">Locked time</th>
                         <th scope="col">Phone number</th>
@@ -68,9 +67,6 @@
                         <th scope="col">Reset token</th>
                         <th scope="col">Role</th>
                         <th scope="col">Action</th>
-
-
-
                     </tr>
                     </thead>
                     <tbody>
@@ -93,7 +89,6 @@
                         <td>[[${p.resetToken}]]</td>
                         <td>[[${p.role}]]</td>
                         <i class="fa-solid fa-check"></i>
-
                         <td><a th:href="@{'/admin/updateUserStatus?status=true&id='+${p.id}}"
                                class="btn btn-sm btn-primary"><i
                                 class="fa-solid fa-check"></i>Active</a>
@@ -106,9 +101,6 @@
                                 class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i>
                             Delete</a></td>
                     </tr>
-
-
-
 <!--                    new-->
                     <tr th:each="p,c:${users1}">
                         <th scope="row">[[${c.count}]]</th>
@@ -129,18 +121,13 @@
                         <td>[[${p.resetToken}]]</td>
                         <td>[[${p.role}]]</td>
                         <i class="fa-solid fa-check"></i>
-
-
                     </tr>
 <!--                    end new-->
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-
 </section>
 </body>
 </html>

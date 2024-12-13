@@ -28,6 +28,7 @@ public class CustomUser implements UserDetails {
         return user.getPassword();
     }
 
+
     @Override
     public String getUsername() {
         return user.getEmail();
@@ -39,15 +40,18 @@ public class CustomUser implements UserDetails {
         return true;
     }
 
+
     @Override
     public boolean isAccountNonLocked() {
         return user.getAccountNonLocked();
     }
 
+
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
 
     @Override
     public boolean isEnabled() {

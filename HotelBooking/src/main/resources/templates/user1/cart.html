@@ -8,10 +8,7 @@
 <body>
 
 <section  th:fragment="section">
-
-
   <div class="container-fluid mt-5 p-5">
-
     <div class="card card-sh">
       <div class="card-header text-center">
         <p class="fs-4">Cart Page</p>
@@ -40,8 +37,6 @@
           </tr>
           </thead>
           <tbody>
-
-
           <tr th:each="p,c:${bookingCarts}">
             <th scope="row">[[${c.count}]]</th>
             <td><img
@@ -51,24 +46,18 @@
             <td>[[${p.room.discountPrice}]]</td>
             <td>[[${p.checkInDate}]]</td>
             <td>[[${p.checkOutDate}]]</td>
-
             <td>
               <ul>
                 <li th:each="service : ${p.services}" th:text="${service}"></li>
               </ul>
             </td>
-
-
-
             <td>[[${p.totalPrice}]]</td>
-
           </tr>
           <tr>
             <td colspan="4"></td>
             <td class="fw-bold">Total Order Price</td>
             <td class="fw-bold">&#8377; [[${totalOrderPrice}]]</td>
           </tr>
-
           </tbody>
         </table>
         <div class="text-center">
